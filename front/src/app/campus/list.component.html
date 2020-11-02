@@ -1,0 +1,29 @@
+﻿<h1>Campuses</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Campus</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">ID</th>
+            <th style="width: 30%">Name</th>
+            <th style="width: 30%">City</th>
+            <th style="width: 10%">City</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of campus">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.City.name}}</td>
+            <td style="white-space: nowrap">
+                <button (click)="deleteCampus(data.id)" class="btn btn-sm btn-danger btn-delete-user">
+                    <span >Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!campus">
+            <td colspan="2" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
