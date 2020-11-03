@@ -3,7 +3,7 @@
 # Practical Test
 
 ## Overview: User Manager 
-Depenencies Application:
+Dependencies Application:
 
 - Angular CLI: 10.1.1
 - npm 6.13.4^
