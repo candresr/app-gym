@@ -9,21 +9,23 @@ Depenencies Application:
 - npm 6.13.4^
 - node 12.16.1^
 - docker 19.03.13^
+- MariaDB 10.3.23^
 
 ### Install
 - Clone the project ()
-- Find 3 directories front, apirest & database
+- Find 2 directories front, apirest
+
 ####Compile and deploy apirest
 - cd apirest/
 - npm i
-- npm start*
+- npm start
 
-*For connect database, you must change credentials in the file apirest/config.js and run command npm start (create automatic database).
+For connect database, you must change credentials in the file apirest/config.js and run command __npm start__ (create automatic database).
 
 #### Create Docker container apirest:
 - sudo docker build -t apirest:v1 .
 - sudo docker build run -d -p 4000:4000 apirest:v1
-- 
+
 ####Compile and deploy front
 - cd front/
 - npm i

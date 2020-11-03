@@ -6,4 +6,5 @@
     lastName: string;
     token: string;
     role: string;
+    idCampus: number;
 }
