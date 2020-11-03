@@ -12,10 +12,10 @@ Depenencies Application:
 - MariaDB 10.3.23^
 
 ### Install
-- Clone the project ()
-- Find 2 directories front, apirest
+- Clone the project (https://github.com/candresr/app-gym)
+- Find 2 directories front & apirest
 
-####Compile and deploy apirest
+#### Compile and deploy apirest
 - cd apirest/
 - npm i
 - npm start
@@ -26,7 +26,7 @@ For connect database, you must change credentials in the file apirest/config.js 
 - sudo docker build -t apirest:v1 .
 - sudo docker build run -d -p 4000:4000 apirest:v1
 
-####Compile and deploy front
+#### Compile and deploy front
 - cd front/
 - npm i
 - npm start
