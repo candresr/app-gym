@@ -1,6 +1,6 @@
 # AppGym
 
-#Practical Test
+# Practical Test
 
 ## Overview: User Manager 
 Depenencies Application:
@@ -20,7 +20,7 @@ Depenencies Application:
 - npm i
 - npm start
 
-For connect database, you must change credentials in the file apirest/config.js and run command __npm start__ (create automatic database).
+For connect  your database, you must change credentials in the file apirest/config.js and run command __npm start__ (create automatic database).
 
 #### Create Docker container apirest:
 - sudo docker build -t apirest:v1 .
