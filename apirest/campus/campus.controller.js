@@ -2,15 +2,17 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('../_middleware/validate-request');
-const authorize = require('../_middleware/authorize')
+// const authorize = require('../_middleware/authorize')
+const { authorize, checkRole } = require('../_middleware/authorize')
 const role = require('../_middleware/authorize')
 const campusService = require('./campus.service');
 const Role = require('../_helpers/role');
 
-router.get('/', authorize(), getAll);
-router.get('/getAllCities', authorize(), getAllCities);
-router.post('/create', authorize(), registerSchema, create);
-router.delete('/delete/:id', authorize(), _delete);
+
+router.get('/', [authorize(), checkRole()], getAll);
+router.get('/getAllCities', [authorize(), checkRole()], getAllCities);
+router.post('/create', [authorize(), checkRole()], registerSchema, create);
+router.delete('/delete/:id', [authorize(), checkRole()], _delete);
 
 module.exports = router;
 
@@ -24,9 +26,6 @@ function registerSchema(req, res, next) {
 
 function create(req, res, next) {
 
-    if (req.user.role != Role.Admin) {
-        return res.status(401).json({ message: 'Unauthorized' });
-    }
     campusService.create(req.body)
         .then(() => res.json({ message: 'Creation successful' }))
         .catch(next);
@@ -34,9 +33,6 @@ function create(req, res, next) {
 
 function getAll(req, res, next) {
 
-    if (req.user.role != Role.Admin) {
-        return res.status(401).json({ message: 'Unauthorized' });
-    }
     campusService.getAll()
         .then(campuses => res.json(campuses))
         .catch(next);
@@ -44,9 +40,6 @@ function getAll(req, res, next) {
 
 function getAllCities(req, res, next) {
 
-    if (req.user.role != Role.Admin) {
-        return res.status(401).json({ message: 'Unauthorized' });
-    }
     campusService.getAllCities()
         .then(campuses => res.json(campuses))
         .catch(next);

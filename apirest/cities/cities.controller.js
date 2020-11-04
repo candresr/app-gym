@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('../_middleware/validate-request');
-const authorize = require('../_middleware/authorize')
+// const authorize = require('../_middleware/authorize')
+const { authorize, checkRole } = require('../_middleware/authorize')
 const role = require('../_middleware/authorize')
 const citiesService = require('./cities.service');
 const Role = require('../_helpers/role');
 
-router.get('/', authorize(), getAll);
+// router.get('/', authorize(), getAll);
+router.get('/', [authorize(), checkRole()], getAll);
 router.post('/create', authorize(), registerSchema, create);
 router.delete('/delete/:id', authorize(), _delete);
 
@@ -33,9 +35,9 @@ function create(req, res, next) {
 
 function getAll(req, res, next) {
 
-    if (req.user.role != Role.Admin) {
-        return res.status(401).json({ message: 'Unauthorized' });
-    }
+    // if (req.user.role != Role.Admin) {
+    //     return res.status(401).json({ message: 'Unauthorized' });
+    // }
     citiesService.getAll()
         .then(cities => res.json(cities))
         .catch(next);
