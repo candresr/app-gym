@@ -24,7 +24,7 @@ For connect  your database, you must change credentials in the file apirest/conf
 
 #### Create Docker container apirest:
 - sudo docker build -t apirest:v1 .
-- sudo docker build run -d -p 4000:4000 apirest:v1
+- sudo docker run -d -p 4000:4000 apirest:v1
 
 #### Compile and deploy front
 - cd front/
@@ -34,7 +34,7 @@ For connect  your database, you must change credentials in the file apirest/conf
 #### Create Docker container front:
 - run command ng build
 - sudo docker build -t front:v1 .
-- sudo docker build run -d -p 80:80 front:v1
+- sudo docker run -d -p 80:80 front:v1
 
 ### Run website in your local
 - [localhost](http://localhost:4000/)
